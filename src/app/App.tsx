@@ -1,5 +1,5 @@
 import svgPaths from "@/imports/svg-k9xq9ew7zi";
-import imgChatGptImageJan132026045514Pm1 from "figma:asset/3cfc1cc43f9187e68c87dc956124e532325fc60f.png";
+import imgChatGptImageJan132026045514Pm1 from "@/assets/headshot.png";
 import { FileText, Linkedin, Mail, ExternalLink, MessageSquare } from "lucide-react";
 
 function Paragraph() {
