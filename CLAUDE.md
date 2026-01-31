@@ -51,3 +51,16 @@ npm run build  # Production build
 - Follow responsive design patterns (flexbox/grid, not absolute positioning)
 - Maintain Figma design fidelity
 - Use `data-name` attributes to identify design elements
+
+## Design System
+
+### Layout
+- Only use absolute positioning when necessary
+- Prefer responsive layouts with flexbox and grid
+- Refactor code as you go to keep it clean
+- Keep file sizes small; extract helpers to separate files
+
+### Button Variants
+- **Primary**: Bold, filled with primary brand color - one per section for main actions
+- **Secondary**: Outlined with primary color, transparent background - for supporting actions
+- **Tertiary**: Text-only, no border - for least important actions
