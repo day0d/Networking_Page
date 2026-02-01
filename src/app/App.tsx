@@ -292,9 +292,9 @@ function ActionButton1() {
 
 function Text4() {
   return (
-    <div className="flex-[1_0_0] min-h-px min-w-px relative flex items-center justify-between" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid">
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[19.906px] not-italic text-[#1a1a1a] text-[12.25px] w-[273px]">Introductions and referrals to opportunities and their associated hiring managers at your company or network</p>
+    <div className="flex-[1_0_0] min-h-px min-w-px relative flex items-center gap-2" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid flex-1">
+        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[19.906px] not-italic text-[#1a1a1a] text-[12.25px]">Introductions and referrals to opportunities and their associated hiring managers at your company or network</p>
       </div>
       <ActionButton1 />
     </div>
@@ -337,9 +337,9 @@ function ActionButton2() {
 
 function Text6() {
   return (
-    <div className="flex-[1_0_0] min-h-px min-w-px relative flex items-center justify-between" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid">
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[19.906px] not-italic text-[#1a1a1a] text-[12.25px] w-[261px]">Feedback on my experience and how it might fit emerging roles in your industry</p>
+    <div className="flex-[1_0_0] min-h-px min-w-px relative flex items-center gap-2" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid flex-1">
+        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[19.906px] not-italic text-[#1a1a1a] text-[12.25px]">Feedback on my experience and how it might fit emerging roles in your industry</p>
       </div>
       <ActionButton2 />
     </div>
@@ -402,9 +402,9 @@ function ActionButton3() {
 
 function Text7() {
   return (
-    <div className="flex-[1_0_0] min-h-px min-w-px relative flex items-center justify-between" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid">
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[19.906px] not-italic text-[#1a1a1a] text-[12.25px] w-[240px]">Referrals to recruiters specializing in product leadership positions</p>
+    <div className="flex-[1_0_0] min-h-px min-w-px relative flex items-center gap-2" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid flex-1">
+        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[19.906px] not-italic text-[#1a1a1a] text-[12.25px]">Referrals to recruiters specializing in product leadership positions</p>
       </div>
       <ActionButton3 />
     </div>
@@ -799,7 +799,7 @@ function Container1() {
 function MainHeader() {
   return (
     <div className="w-full pt-[28px] px-[42px] pb-[14px]" data-name="MainHeader">
-      <h1 className="font-['Inter',sans-serif] font-semibold text-[28px] text-[#1a1a1a] tracking-[-0.5px]">
+      <h1 className="font-['Inter',sans-serif] font-semibold text-[28px] text-[#1a1a1a] tracking-[-0.5px] text-center">
         Career Support & Guidance Snapshot
       </h1>
     </div>
