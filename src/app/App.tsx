@@ -1,39 +1,7 @@
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import svgPaths from "@/imports/svg-k9xq9ew7zi";
 import imgChatGptImageJan132026045514Pm1 from "@/assets/headshot.png";
-import { FileText, Linkedin, Mail, ExternalLink, MessageSquare } from "lucide-react";
-
-function Paragraph() {
-  return (
-    <div className="absolute left-[180px] top-[70px] w-[450px]" data-name="Paragraph">
-      <p className="font-['Inter',sans-serif] font-light italic leading-[24px] text-[#666] text-[18px]">Learning Experience Designer</p>
-    </div>
-  );
-}
-
-function Text() {
-  return null;
-}
-
-function Heading() {
-  return (
-    <div className="absolute left-[180px] top-[35px] w-[450px]" data-name="Heading 1">
-      <p className="font-['Inter',sans-serif] font-semibold leading-[36px] text-[#1a1a1a] text-[32px]">Derrick Yoder</p>
-    </div>
-  );
-}
-
-function Container() {
-  return (
-    <div className="absolute h-[203px] left-[42px] top-[6px] w-[732px]" data-name="Container">
-      <div className="absolute left-0 rounded-full size-[140px] top-[32px]" data-name="ChatGPT Image Jan 13, 2026, 04_55_14 PM 1">
-        <img alt="Profile" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-full size-full" src={imgChatGptImageJan132026045514Pm1} />
-      </div>
-      <Heading />
-      <Paragraph />
-      <p className="absolute font-['Inter',sans-serif] font-medium leading-[20px] left-[180px] text-[#888] text-[14px] text-left top-[105px] tracking-[0.5px] uppercase">{`Career Support & Guidance Snapshot`}</p>
-    </div>
-  );
-}
+import { FileText, Linkedin, Mail, ExternalLink, MessageSquare, MessageCircle, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 
 function Container3() {
   return <div className="bg-gradient-to-b from-[#f9d71c] h-[21px] rounded-[26843500px] shrink-0 to-[#e64a8a] w-[3.5px]" data-name="Container" />;
@@ -163,7 +131,7 @@ function Heading10() {
   return (
     <div className="h-[22.75px] relative shrink-0" data-name="Heading 3">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[22.75px] left-0 not-italic text-[#1a1a1a] text-[17.5px] top-[-1.8px] tracking-[-0.4375px]">{`Where I'm Seeking`}</p>
+        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[22.75px] left-0 not-italic text-[#1a1a1a] text-[17.5px] top-[-1.8px] tracking-[-0.4375px] whitespace-nowrap">{`Where I'm Seeking`}</p>
       </div>
     </div>
   );
@@ -289,14 +257,35 @@ function Container19() {
 }
 
 function ActionButton1() {
+  const subject = encodeURIComponent("Possible Introduction");
+  const body = encodeURIComponent(
+    "Hi [Name],\n\n" +
+    "Would you be open to an introduction to my [friend/colleague], Derrick Yoder? " +
+    "Derrick does thoughtful work at the intersection of learning experience design, " +
+    "design research, and strategy. I think the two of you would have a great conversation. " +
+    "He's exploring his next professional steps and would appreciate a brief call to get your perspective.\n\n" +
+    "Let me know if you're open and I'll connect you."
+  );
+
+  const mailtoUrl = `mailto:?subject=${subject}&body=${body}`;
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href = mailtoUrl;
+  };
+
   return (
     <a
-      href="mailto:?subject=Possible%20Introduction&body=Hi%20%5BName%5D%2C%0A%0AWould%20you%20be%20open%20to%20an%20introduction%20to%20my%20%5Bfriend%2Fcolleague%5D%2C%20Derrick%20Yoder%3F%20Derrick%20does%20thoughtful%20work%20at%20the%20intersection%20of%20learning%20experience%20design%2C%20design%20research%2C%20and%20strategy.%20I%20think%20the%20two%20of%20you%20would%20have%20a%20great%20conversation.%20He%E2%80%99s%20exploring%20his%20next%20professional%20steps%20and%20would%20appreciate%20a%20brief%20call%20to%20get%20your%20perspective.%0A%0ALet%20me%20know%20if%20you%E2%80%99re%20open%20and%20I%E2%80%99ll%20connect%20you."
-      className="group relative ml-2 inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity"
-      title="If you click on this, it'll open up an email that has a draft. That will basically say, 'Are you okay with me making an introduction to you? I've found that this works better for opening up the conversation and helping them orient to a new connection.'"
+      href={mailtoUrl}
+      onClick={handleClick}
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0 cursor-pointer select-none"
+      title="Opens your email client with a pre-filled introduction request"
+      role="button"
+      tabIndex={0}
     >
       <Mail className="w-3 h-3" />
-      Request Introduction
+      Request Intro
     </a>
   );
 }
@@ -314,7 +303,7 @@ function Text4() {
 
 function Container18() {
   return (
-    <div className="content-stretch flex gap-[10.5px] items-start relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex gap-[10.5px] items-center relative shrink-0 w-full" data-name="Container">
       <Container19 />
       <Text4 />
     </div>
@@ -337,7 +326,7 @@ function ActionButton2() {
       href="https://docs.google.com/forms/d/e/1FAIpQLSfVPfdsMJu00_3EPytKIaV3nIdwLxHAz3RJwQJ7T7PoLgiupA/viewform?usp=publish-editor"
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative ml-2 inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity"
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0"
       title="Provide feedback via Google Form"
     >
       <MessageSquare className="w-3 h-3" />
@@ -359,7 +348,7 @@ function Text6() {
 
 function Container22() {
   return (
-    <div className="content-stretch flex gap-[10.5px] items-start relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex gap-[10.5px] items-center relative shrink-0 w-full" data-name="Container">
       <Container21 />
       <Text6 />
     </div>
@@ -377,11 +366,33 @@ function Container25() {
 }
 
 function ActionButton3() {
+  const subject = encodeURIComponent("Recruiter Introduction Request");
+  const body = encodeURIComponent(
+    "Hi [Name],\n\n" +
+    "Would you be open to introducing me to a recruiter you know? " +
+    "I'm looking for recruiters who specialize in product leadership or learning experience design roles.\n\n" +
+    "My friend/colleague Derrick Yoder does thoughtful work at the intersection of learning experience design, " +
+    "design research, and strategy. He's exploring his next professional steps and would appreciate " +
+    "being connected with recruiters in your network.\n\n" +
+    "Let me know if you're open and I'll share more details."
+  );
+
+  const mailtoUrl = `mailto:?subject=${subject}&body=${body}`;
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href = mailtoUrl;
+  };
+
   return (
     <a
-      href="mailto:?subject=Possible%20Introduction&body=Hi%20%5BName%5D%2C%0A%0AWould%20you%20be%20open%20to%20an%20introduction%20to%20my%20%5Bfriend%2Fcolleague%5D%2C%20Derrick%20Yoder%3F%20Derrick%20does%20thoughtful%20work%20at%20the%20intersection%20of%20learning%20experience%20design%2C%20design%20research%2C%20and%20strategy.%20I%20think%20the%20two%20of%20you%20would%20have%20a%20great%20conversation.%20He%E2%80%99s%20exploring%20his%20next%20professional%20steps%20and%20would%20appreciate%20a%20brief%20call%20to%20get%20your%20perspective.%0A%0ALet%20me%20know%20if%20you%E2%80%99re%20open%20and%20I%E2%80%99ll%20connect%20you."
-      className="group relative ml-2 inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity"
-      title="Request recruiter introduction"
+      href={mailtoUrl}
+      onClick={handleClick}
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0 cursor-pointer select-none"
+      title="Opens your email client with a pre-filled recruiter introduction request"
+      role="button"
+      tabIndex={0}
     >
       <Mail className="w-3 h-3" />
       Request Recruiter Intro
@@ -402,7 +413,7 @@ function Text7() {
 
 function Container24() {
   return (
-    <div className="content-stretch flex gap-[10.5px] items-start relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex gap-[10.5px] items-center relative shrink-0 w-full" data-name="Container">
       <Container25 />
       <Text7 />
     </div>
@@ -440,7 +451,7 @@ function Heading4() {
   return (
     <div className="h-[22.75px] relative shrink-0" data-name="Heading 3">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[22.75px] left-0 not-italic text-[#1a1a1a] text-[17.5px] top-[-1.8px] tracking-[-0.4375px]">{`My Background & Contact`}</p>
+        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[22.75px] left-0 not-italic text-[#1a1a1a] text-[17.5px] top-[-1.8px] tracking-[-0.4375px] whitespace-nowrap">{`My Background & Contact`}</p>
       </div>
     </div>
   );
@@ -456,6 +467,10 @@ function Container26() {
 }
 
 function BackgroundAssets() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
   const highlights = [
     {
       title: "Learning Platform Redesign",
@@ -477,33 +492,89 @@ function BackgroundAssets() {
     }
   ];
 
+  const checkScrollButtons = useCallback(() => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkScrollButtons();
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScrollButtons);
+      return () => container.removeEventListener('scroll', checkScrollButtons);
+    }
+  }, [checkScrollButtons]);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 300;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <div className="relative w-full overflow-x-auto scrollbar-thin scrollbar-thumb-[#4a7c8a] scrollbar-track-gray-100">
-      <div className="flex gap-6 pb-4">
-        {highlights.map((highlight, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-[280px] bg-white p-6 rounded-lg border border-gray-200 hover:border-[#4a7c8a] hover:shadow-md transition-all"
-          >
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start justify-between">
-                <span className="text-4xl">{highlight.icon}</span>
-                <span className="text-[10px] font-['Inter',sans-serif] text-[#888] bg-gray-100 px-2 py-1 rounded">
-                  {highlight.date}
-                </span>
-              </div>
-              <div>
-                <h4 className="font-['Inter',sans-serif] font-semibold text-[15px] text-[#1a1a1a] mb-2">
-                  {highlight.title}
-                </h4>
-                <p className="font-['Inter',sans-serif] text-[12px] text-[#666] leading-[18px]">
-                  {highlight.description}
-                </p>
+    <div className="relative w-full group">
+      {/* Left navigation button */}
+      {canScrollLeft && (
+        <button
+          onClick={() => scroll('left')}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg border border-gray-200 hover:border-[#4a7c8a] transition-all"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-5 h-5 text-[#4a7c8a]" />
+        </button>
+      )}
+
+      {/* Scrollable content */}
+      <div
+        ref={scrollContainerRef}
+        className="relative w-full overflow-x-auto overflow-y-hidden scrollbar-hide"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        <div className="flex gap-6 pb-4">
+          {highlights.map((highlight, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-[280px] bg-white p-6 rounded-lg border border-gray-200 hover:border-[#4a7c8a] hover:shadow-md transition-all"
+            >
+              <div className="flex flex-col gap-4">
+                <div className="flex items-start justify-between">
+                  <span className="text-4xl">{highlight.icon}</span>
+                  <span className="text-[10px] font-['Inter',sans-serif] text-[#888] bg-gray-100 px-2 py-1 rounded">
+                    {highlight.date}
+                  </span>
+                </div>
+                <div>
+                  <h4 className="font-['Inter',sans-serif] font-semibold text-[15px] text-[#1a1a1a] mb-2">
+                    {highlight.title}
+                  </h4>
+                  <p className="font-['Inter',sans-serif] text-[12px] text-[#666] leading-[18px]">
+                    {highlight.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+
+      {/* Right navigation button */}
+      {canScrollRight && (
+        <button
+          onClick={() => scroll('right')}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg border border-gray-200 hover:border-[#4a7c8a] transition-all"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-5 h-5 text-[#4a7c8a]" />
+        </button>
+      )}
     </div>
   );
 }
@@ -596,49 +667,27 @@ function Container44() {
   );
 }
 
-function Icon1() {
-  return (
-    <div className="relative shrink-0 size-[14px]" data-name="Icon">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-        <g clipPath="url(#clip0_1_160)" id="Icon">
-          <path d={svgPaths.p3a6edb80} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.16667" />
-        </g>
-        <defs>
-          <clipPath id="clip0_1_160">
-            <rect fill="white" height="14" width="14" />
-          </clipPath>
-        </defs>
-      </svg>
-    </div>
-  );
-}
-
-function Container47() {
-  return (
-    <div className="bg-[rgba(255,255,255,0.1)] relative rounded-[26843500px] shrink-0 size-[28px]" data-name="Container">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <Icon1 />
-      </div>
-    </div>
-  );
-}
-
-function Text9() {
-  return (
-    <div className="h-[17.5px] relative shrink-0 w-[81.675px]" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-start relative size-full">
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[17.5px] not-italic relative shrink-0 text-[12.25px] text-white">(555) 123-4567</p>
-      </div>
-    </div>
-  );
-}
 
 function Container46() {
   return (
-    <div className="col-[2] content-stretch flex gap-[10.5px] items-center relative row-[1] self-stretch shrink-0" data-name="Container">
-      <Container47 />
-      <Text9 />
-    </div>
+    <a
+      href="https://wa.link/5dbxs7"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="col-[2] content-stretch flex gap-[10.5px] items-center relative row-[1] self-stretch shrink-0 hover:opacity-80 transition-opacity"
+      data-name="Container"
+    >
+      <div className="bg-[rgba(255,255,255,0.1)] relative rounded-[26843500px] shrink-0 size-[28px]">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+          <MessageCircle className="size-[14px] text-white" />
+        </div>
+      </div>
+      <div className="h-[17.5px] relative shrink-0">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-start relative size-full">
+          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[17.5px] not-italic relative shrink-0 text-[12.25px] text-white">WhatsApp</p>
+        </div>
+      </div>
+    </a>
   );
 }
 
@@ -685,46 +734,29 @@ function Container48() {
   );
 }
 
-function Icon3() {
-  return (
-    <div className="relative shrink-0 size-[14px]" data-name="Icon">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-        <g id="Icon">
-          <path d="M4.66667 1.16667V3.5" id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.16667" />
-          <path d="M9.33333 1.16667V3.5" id="Vector_2" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.16667" />
-          <path d={svgPaths.p24a2b500} id="Vector_3" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.16667" />
-          <path d="M1.75 5.83333H12.25" id="Vector_4" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.16667" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Container51() {
-  return (
-    <div className="bg-[rgba(255,255,255,0.1)] relative rounded-[26843500px] shrink-0 size-[28px]" data-name="Container">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <Icon3 />
-      </div>
-    </div>
-  );
-}
-
-function Text11() {
-  return (
-    <div className="h-[17.5px] relative shrink-0 w-[133.963px]" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-start relative size-full">
-        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[17.5px] not-italic relative shrink-0 text-[12.25px] text-white">calendly.com/derrickyoder</p>
-      </div>
-    </div>
-  );
-}
-
-function Container50() {
+function SchedulingButtons() {
   return (
     <div className="col-[2] content-stretch flex gap-[10.5px] items-center relative row-[2] self-stretch shrink-0" data-name="Container">
-      <Container51 />
-      <Text11 />
+      <a
+        href="https://calendar.app.google/dE6USMiCrZsq3zer9"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[rgba(255,255,255,0.1)] text-white rounded-md text-[12.25px] font-['Inter:Regular',sans-serif] hover:bg-[rgba(255,255,255,0.2)] transition-colors"
+        title="Schedule a 30 minute meeting"
+      >
+        <Calendar className="w-3.5 h-3.5" />
+        30m Meeting
+      </a>
+      <a
+        href="https://calendly.com/derrickyoder/30m-meeting"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[rgba(255,255,255,0.1)] text-white rounded-md text-[12.25px] font-['Inter:Regular',sans-serif] hover:bg-[rgba(255,255,255,0.2)] transition-colors"
+        title="Schedule a 60 minute meeting"
+      >
+        <Calendar className="w-3.5 h-3.5" />
+        60m Meeting
+      </a>
     </div>
   );
 }
@@ -735,7 +767,7 @@ function Container43() {
       <Container44 />
       <Container46 />
       <Container48 />
-      <Container50 />
+      <SchedulingButtons />
     </div>
   );
 }
@@ -753,7 +785,7 @@ function Section4() {
 
 function Container1() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[35px] items-start left-0 px-[42px] top-[231px] w-[816px]" data-name="Container">
+    <div className="content-stretch flex flex-col gap-[35px] items-start px-[42px] w-full" data-name="Container">
       <Section />
       <Container5 />
       <Section2 />
@@ -763,29 +795,56 @@ function Container1() {
   );
 }
 
-function Paragraph7() {
+
+function MainHeader() {
   return (
-    <div className="content-stretch flex h-[13.988px] items-start relative shrink-0 w-full" data-name="Paragraph">
-      <p className="flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal leading-[14px] min-h-px min-w-px not-italic relative text-[#666] text-[10.5px] text-center whitespace-pre-wrap">Thank you for taking the time to review my career snapshot. I look forward to connecting!</p>
+    <div className="w-full pt-[28px] px-[42px] pb-[14px]" data-name="MainHeader">
+      <h1 className="font-['Inter',sans-serif] font-semibold text-[28px] text-[#1a1a1a] tracking-[-0.5px]">
+        Career Support & Guidance Snapshot
+      </h1>
     </div>
   );
 }
 
-function Container52() {
+function ProfileUnit() {
   return (
-    <div className="absolute content-stretch flex flex-col h-[56.788px] items-start left-[16px] pt-[21.8px] px-[21px] top-[1200px] w-[816px]" data-name="Container">
-      <div aria-hidden="true" className="absolute border-[rgba(0,0,0,0.05)] border-solid border-t-[0.8px] inset-0 pointer-events-none" />
-      <Paragraph7 />
+    <div className="flex items-center gap-[24px] px-[42px] py-[20px]" data-name="ProfileUnit">
+      <div className="rounded-full size-[140px] shrink-0" data-name="ProfilePhoto">
+        <img
+          alt="Profile"
+          className="object-cover pointer-events-none rounded-full size-full"
+          src={imgChatGptImageJan132026045514Pm1}
+        />
+      </div>
+      <div className="flex flex-col gap-[4px]">
+        <p className="font-['Inter',sans-serif] font-semibold leading-[36px] text-[#1a1a1a] text-[32px]">
+          Derrick Yoder
+        </p>
+        <p className="font-['Inter',sans-serif] font-light italic leading-[24px] text-[#666] text-[18px]">
+          Learning Experience Designer
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function FooterThankYou() {
+  return (
+    <div className="w-full mt-[35px] pt-[21.8px] px-[42px] pb-[28px] border-t border-[rgba(0,0,0,0.05)]" data-name="FooterThankYou">
+      <p className="font-['Inter',sans-serif] font-normal leading-[14px] text-[#666] text-[10.5px] text-center">
+        Thank you for taking the time to review my career snapshot. I look forward to connecting!
+      </p>
     </div>
   );
 }
 
 function CareerSnapshot() {
   return (
-    <div className="bg-white h-[1280px] relative shrink-0 w-full" data-name="CareerSnapshot">
-      <Container />
+    <div className="bg-white relative shrink-0 w-full" data-name="CareerSnapshot">
+      <MainHeader />
+      <ProfileUnit />
       <Container1 />
-      <Container52 />
+      <FooterThankYou />
     </div>
   );
 }
