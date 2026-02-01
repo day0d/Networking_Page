@@ -257,32 +257,11 @@ function Container19() {
 }
 
 function ActionButton1() {
-  const subject = encodeURIComponent("Possible Introduction");
-  const body = encodeURIComponent(
-    "Hi [Name],\n\n" +
-    "Would you be open to an introduction to my [friend/colleague], Derrick Yoder? " +
-    "Derrick does thoughtful work at the intersection of learning experience design, " +
-    "design research, and strategy. I think the two of you would have a great conversation. " +
-    "He's exploring his next professional steps and would appreciate a brief call to get your perspective.\n\n" +
-    "Let me know if you're open and I'll connect you."
-  );
-
-  const mailtoUrl = `mailto:?subject=${subject}&body=${body}`;
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location.href = mailtoUrl;
-  };
-
   return (
     <a
-      href={mailtoUrl}
-      onClick={handleClick}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0 cursor-pointer select-none"
+      href="mailto:?body=Hi%20%5BName%5D,%0A%0AWould%20you%20be%20open%20to%20an%20introduction%20to%20my%20%5Bfriend%2Fcolleague%5D,%20Derrick%20Yoder%3F%20Derrick%20does%20thoughtful%20work%20at%20the%20intersection%20of%20learning%20experience%20design,%20design%20research,%20and%20strategy.%20I%20think%20the%20two%20of%20you%20would%20have%20a%20great%20conversation.%20He%27s%20exploring%20his%20next%20professional%20steps%20and%20would%20appreciate%20a%20brief%20call%20to%20get%20your%20perspective.%0A%0ALet%20me%20know%20if%20you%27re%20open%20and%20I%27ll%20connect%20you.&bcc=yoderderrick@gmail.com"
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0"
       title="Opens your email client with a pre-filled introduction request"
-      role="button"
-      tabIndex={0}
     >
       <Mail className="w-3 h-3" />
       Request Intro
@@ -366,33 +345,11 @@ function Container25() {
 }
 
 function ActionButton3() {
-  const subject = encodeURIComponent("Recruiter Introduction Request");
-  const body = encodeURIComponent(
-    "Hi [Name],\n\n" +
-    "Would you be open to introducing me to a recruiter you know? " +
-    "I'm looking for recruiters who specialize in product leadership or learning experience design roles.\n\n" +
-    "My friend/colleague Derrick Yoder does thoughtful work at the intersection of learning experience design, " +
-    "design research, and strategy. He's exploring his next professional steps and would appreciate " +
-    "being connected with recruiters in your network.\n\n" +
-    "Let me know if you're open and I'll share more details."
-  );
-
-  const mailtoUrl = `mailto:?subject=${subject}&body=${body}`;
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location.href = mailtoUrl;
-  };
-
   return (
     <a
-      href={mailtoUrl}
-      onClick={handleClick}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0 cursor-pointer select-none"
-      title="Opens your email client with a pre-filled recruiter introduction request"
-      role="button"
-      tabIndex={0}
+      href="mailto:?bcc=yoderderrick@gmail.com"
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-b from-[#e64a8a] to-[#d45b5b] text-white rounded-md text-[10.5px] font-medium hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0"
+      title="Opens your email client"
     >
       <Mail className="w-3 h-3" />
       Request Recruiter Intro
